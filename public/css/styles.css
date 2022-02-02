@@ -1,0 +1,28 @@
+:root {
+    --amarillo: #EAC926;;
+    --azul: #03264C;
+    --celeste: #1259c3;
+    --gris-oscuro: #666;
+    --gris-claro: #ebebeb;
+    --verde: #39b54a;
+    --cuerpo-texto: 0.75em;
+    --titulares: 1.5em;
+    --precios: 1.125em;
+    --descuentos: 1em;
+    --descripciones: 1em;
+  }
+
+@font-face {
+    font-family: Roboto;
+    src: url(/fonts/Roboto-Regular.ttf);
+}
+
+
+@media (min-width: 361px){
+
+}
+
+
+@media (min-width: 769px){
+
+}
