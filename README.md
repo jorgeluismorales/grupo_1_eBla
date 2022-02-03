@@ -5,12 +5,17 @@ Nuestro público objetivo esta orientado tanto a clientes/público en general y 
 
 Se ha tomado de referencia a las siguientes páginas web del rubro:
 
-1-https://www.hard-digital.com.ar/
+1-https://www.hard-digital.com.ar/ 
+\
 2-https://www.malditohard.com.ar/
+\
 3-https://www.gamingcity.com.ar/
+\
 4-https://www.gezatek.com.ar/
+\
 5-https://www.fullh4rd.com.ar/
-
+\
+\
 URL deploy:
 https://dh-ebla.herokuapp.com/
 
