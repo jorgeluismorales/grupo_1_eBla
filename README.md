@@ -16,6 +16,7 @@ Se ha tomado de referencia a las siguientes páginas web del rubro:
 5-https://www.fullh4rd.com.ar/
 \
 \
+TRELLO: https://trello.com/b/6jqRnVna/asignaci%C3%B3n-de-tareas
 URL deploy:
 https://dh-ebla.herokuapp.com/
 
