@@ -17,11 +17,50 @@
     src: url(/fonts/Roboto-Regular.ttf);
 }
 
-
-@media (min-width: 361px){
-
+*{
+  box-sizing: border-box;
 }
 
+/*-----FORMULARIOS-----*/
+
+.register, .login {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  max-width: 800px;
+  margin: auto;
+  padding: 50px 10px;
+  border-radius: 2px;
+  background-color: #1b2020; /*PROVISORIO*/
+}
+
+.login {
+  padding: 100px 10px;
+}
+
+.register input, .login input {
+  width: 100%;
+  margin: 10px auto;
+  padding: 10px;
+  border: none;
+  border-radius: 2px;
+}
+
+.register button, .login button {
+  width: 100%;
+  margin: 20px auto 10px auto;
+  padding: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+@media (min-width: 361px){
+  .register input, .login input, .register button, .login button {
+    width: 70%;
+    max-width: 400px;
+}
+}
 
 @media (min-width: 769px){
 
