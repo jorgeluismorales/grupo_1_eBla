@@ -16,14 +16,6 @@ app.use(cookieParser())
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 
-app.get('/', (req, res) => {
-    res.render('home');
-}
-);
-app.get('/product-detail', (req, res) => {
-    res.render('product-detail');
-}
-);
 app.get('/shopping-cart', (req, res) => {
     res.render('shopping-cart');
 }
@@ -36,6 +28,12 @@ app.get('/register', (req, res) => {
     res.render('register-form');
 }
 );
+
+app.get('/', (req, res) => {
+    res.redirect('/products');
+})
+
+app.use('/products', require('./routes/products'));
 
 dbConnectMySQL();
 

@@ -9,6 +9,48 @@ body {
     margin-top: 0;
 }
 
+.edit{
+    background-color: #FFD93D;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.edit a{
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+.edit:hover{
+    background-color: #e4ba48;
+}
+
+.delete{
+    background-color: #FF6B6B;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+}
+
+.delete:hover{
+    background-color: #da3737;
+}
+
+@media screen and (max-width: 619px){
+    main{
+        position: relative;
+        top: -200px;
+}
+
+
+}
 .input-container input{
     height: 35px;
     border-radius: 5px;

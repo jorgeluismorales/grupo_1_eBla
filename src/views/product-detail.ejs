@@ -17,11 +17,11 @@
             <section>
                 <div class="product-container">
                     <div class="product-header">
-                        <h3>MONITOR 27 HP P27V HDMI IPS (I)</h3>
-                        <img src="/images/monitor-hp.png" class="image-product">
+                        <h3><%= product.name %></h3>
+                        <img src="<%= product.image %>" class="image-product">
                     </div>
                     <div>
-                        <h2>$ 31.170</h2>
+                        <h2>$ <%= product.price %></h2>
                         <div class="icons-container">
                             <span class="icons-style">
                                 <span class="stock-icon">
@@ -51,7 +51,12 @@
                                 <span class="text-icon">Retiro en local</span>
                             </span>
                         </div>
-
+                        <div>
+                            <div class="edit"><a href="/products/edit/<%= product.id %>">EDITAR PRODUCTO</a></div>
+						<form action="/products/<%= product.id %>?_method=DELETE" method="POST" style="display: inline-flex">
+							<button type="submit" class="delete">ELIMINAR</button>
+						</form>
+                        </div>
                         <div class="button-container">
                             <button class="add-cart">Agregar al carrito <i class="fa-solid fa-cart-plus"></i></button>
                             <button class="buy-now">Comprar ahora <i class="fa-solid fa-lock"></i></button>
@@ -63,34 +68,7 @@
             <section class="description-container">
                 <div>
                     <h3>Descripcion</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam optio accusantium dolorem eligendi
-                        eum
-                        sit
-                        laborum explicabo, consequuntur id soluta assumenda repellat architecto magni cum impedit vel
-                        consectetur
-                        delectus rem repudiandae fugit? Nulla ducimus reprehenderit quaerat. Voluptate tenetur deleniti
-                        quia
-                        mollitia vel illum veritatis sequi numquam, velit cupiditate repellendus quidem accusamus id hic
-                        maiores?
-                        Reiciendis labore ab laboriosam obcaecati repudiandae voluptatibus illo consequuntur suscipit
-                        tempora
-                        error
-                        quasi ipsa recusandae dolores iste officia reprehenderit sapiente, vitae optio ex? Consequatur
-                        eos
-                        non
-                        dolore quisquam, enim in maxime consequuntur quo, hic fugiat aut, atque provident. Aliquid
-                        deserunt
-                        quaerat
-                        voluptas commodi odit. Nesciunt recusandae id quos culpa ab ducimus deleniti voluptatum quod
-                        non,
-                        ipsa
-                        explicabo! Explicabo, facere ipsum! Sunt, omnis eligendi quos veritatis rerum, voluptas ad, unde
-                        iusto
-                        nam
-                        doloribus minima! Minima aliquam quo omnis mollitia. Quam, quia? Dicta atque itaque beatae ad
-                        accusamus
-                        necessitatibus ab officiis excepturi odit, iusto suscipit nihil maxime nulla?
-                    </p>
+                    <p><%= product.description %></p>
                 </div>
             </section>
         </main>

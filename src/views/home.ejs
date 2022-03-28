@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,50 +10,34 @@
     <script src="https://kit.fontawesome.com/17362327c7.js" crossorigin="anonymous"></script>
     <title>Ebla - Home</title>
 </head>
+
 <body>
-   
-        <%- include('partials/nav.ejs') %>
-   
+    <%- include('partials/nav.ejs') %>
 
-<main>
-   <section>
-    <h1>Productos Nuevos</h1>
-       <div>
-        <img src="/images/monitor-hp.png" width="500px" >  
-         <h2>Monitor 24 pulgadas marca HP </h2> 
-         <p>$45.000 (ARS)</p>  
-         <button>ver detalle</button>
-    </div>
-    <hr>
-    <div>
-        <img src="/images/pc_gamer.jpg" width="500px" >  
-         <h2>PC GAMER </h2> 
-         <p>$260.000 (ARS)</p>  
-         <button>ver detalle</button>
-    </div>
+        <main>
+            <section>
+                <% products.forEach(function(product){ %>
+                    <article>
+                        <a href="/products/<%= product.id %>">
+                            <img src="<%= product.image %>" alt="<%= product.name %>">
+                            <h3 class="price">$ <%= product.price %> <span class="discount">
+                                    <% if (product.discount>0) { %>
+                                        <%= product.discount %>%
+                                            <% } %>
+                                </span>
+                            </h3>
+                            <H4 class="free-shipping">Envío gratis</H4>
+                            <p class="product-title">
+                                <%= product.name %>
+                            </p>
+                        </a>
+                    </article>
+                    <% }) %>
+            </section>
+        </main>
 
-    <hr>
-    <div>
-        <img src="/images/mouse.jpg" width="500px" >  
-         <h2>Mouse GAMER PRO </h2> 
-         <p>$7500 (ARS)</p>  
-         <button>ver detalle</button>
-    </div>
-    <hr>
-    <div>
-        <img src="/images/silla_gamer.jpg" width="500px" >  
-         <h2>Mouse GAMER PRO </h2> 
-         <p>$20.000 (ARS)</p>  
-         <button>ver detalle</button>
-    </div>
-    
-
-   </section> 
-
-</main>
-
-
-    <%- include('partials/footer.ejs') %>
-    <script src="js/scripts.js"></script>
+        <%- include('partials/footer.ejs') %>
+            <script src="js/scripts.js"></script>
 </body>
+
 </html>
