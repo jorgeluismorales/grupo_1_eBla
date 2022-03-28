@@ -15,9 +15,9 @@
     <%- include('partials/nav.ejs') %>
 
     <main>
-        <form class="login" action="" method="post">
-            <input type="email" name="correo" placeholder="Email">
-            <input type="password" name="contraseña" placeholder="Contraseña">
+        <form class="login" action="/login" method="POST">
+            <input type="email" name="email" placeholder="Email">
+            <input type="password" name="password" placeholder="Contraseña">
 
             <button type="submit">Iniciar sesión</button>
         </form>
@@ -25,6 +25,7 @@
 
     <%- include('partials/footer.ejs') %>
     <script src="js/scripts.js"></script>
+      
 </body>
 
 </html>

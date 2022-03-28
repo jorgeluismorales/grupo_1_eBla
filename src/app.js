@@ -11,17 +11,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(cookieParser())
-
-
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 
 app.get('/shopping-cart', (req, res) => {
     res.render('shopping-cart');
-}
-);
-app.get('/login', (req, res) => {
-    res.render('login-form');
 }
 );
 
@@ -31,6 +25,8 @@ app.get('/', (req, res) => {
 
 app.use('/register' , require('./routes/register'));
 app.use('/products', require('./routes/products'));
+app.use('/users', require('./routes/users'));
+app.use('/login', require('./routes/login'));
 
 dbConnectMySQL();
 
