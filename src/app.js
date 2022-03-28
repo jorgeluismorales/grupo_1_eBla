@@ -24,15 +24,12 @@ app.get('/login', (req, res) => {
     res.render('login-form');
 }
 );
-app.get('/register', (req, res) => {
-    res.render('register-form');
-}
-);
 
 app.get('/', (req, res) => {
     res.redirect('/products');
 })
 
+app.use('/register' , require('./routes/register'));
 app.use('/products', require('./routes/products'));
 
 dbConnectMySQL();
