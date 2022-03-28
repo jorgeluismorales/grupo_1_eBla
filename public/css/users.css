@@ -1,0 +1,230 @@
+@font-face {
+    font-family: Roboto;
+    src: url(/fonts/Roboto-Regular.ttf);
+}
+
+body{
+    font-family: Roboto;
+}
+
+section{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    
+}
+
+article{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 250px;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+}
+
+img{
+    width: 150px;
+    border-radius: 10px;
+}
+
+@media (min-width: 361px){
+
+
+}
+
+@media screen and (min-width: 620px){
+  main {
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+}
+
+@media screen and (min-width: 960px){
+main {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+}
+
+/*-----ESTILOS NAV-----*/
+.input-container input{
+  height: 35px;
+  border-radius: 5px;
+  border: none;
+}
+.input-container{
+  position: relative;
+}
+.input-container i{
+  position: absolute;
+  right: 0;
+  padding: 10px;
+  color: grey;
+}
+
+.input-container  input[type="text"]::placeholder {  
+  padding-left: 15px; 
+}    
+
+.toggle-menu{
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  cursor: pointer;
+  width: 40px;
+  z-index: 1;
+}
+.logo{
+  color: gray;
+  width: 40px;
+  display: none;
+}
+.main-menu {
+  list-style: none;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #713fbb;
+  transition: transform 0.3s;
+  transform: translateY(-100%);
+}
+
+.main-menu--show{
+  transform: translateY(0);
+}
+.main-menu__item {
+  padding: 1em;
+}
+
+.main-menu__link {
+color: white;
+text-transform: uppercase;
+text-decoration: none;
+}
+
+@media screen and (min-width: 620px){
+
+.toggle-menu {
+  display: none;
+}
+.main-menu {
+  flex-direction: row;
+  transform: translateY(0);
+}
+}
+
+
+@media screen and (min-width: 960px){
+.logo{
+  display: block;
+}
+}
+/*-----FIN NAV-----*/
+
+/*-----ESTILOS FOOTER-----*/
+
+.footer-container{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  }
+.form-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+.input-newsletter{
+  border-radius: 4px;
+  width: 200px;
+  height: 30px;
+  margin-top: 10px;
+}
+.btn-newsletter{
+  background-color: #4e2f7c;
+  color: white;
+  border: #713fbb;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: bold;
+  width: 200px;
+  margin-top: 10px;
+}
+.btn-newsletter:hover{
+  background-color: #713fbb;
+}
+.icons-footer-container{
+  text-align: center;
+  margin-top: 20px;
+}
+.icons-footer {
+  font-size: 25px;
+  margin-right: 10px;
+  text-decoration: none;
+}
+.facebook{
+  color: #3b5998;
+}
+.facebook:hover{
+  color: #2457c5;
+}
+.twitter{
+  color: #1da1f2;
+}
+.twitter:hover{
+  color: #0d8ddd;
+}
+.linkedin{
+  color: #0077b5;
+}
+.linkedin:hover{
+  color: #0062a3;
+}
+.instagram{
+  color: #e1306c;
+}
+.instagram:hover{
+  color: #c12a5c;
+}
+
+@media screen and (min-width: 620px){
+
+.input-newsletter{
+  width: 300px;
+}
+.btn-newsletter{
+  width: 300px;
+}   
+}
+
+@media screen and (min-width: 960px){
+.form-container{
+  display: flex;
+  flex-direction: row;
+}
+.footer-container{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+   margin: 0px 100px;
+}
+.btn-newsletter{
+  margin-left: 20px;
+}
+}
+
+/*-----FIN FOOTER-----*/

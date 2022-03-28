@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/user-detail.css">
+    <script src="https://kit.fontawesome.com/17362327c7.js" crossorigin="anonymous"></script>
+    <title>Ebla - Registro</title>
+</head>
+
+<body>
+    <%- include('partials/nav.ejs') %>
+
+        <main>
+            <img src="<%= user.image %>" alt="">
+            <p class="product-title"><span>Nombre: </span>
+                <%= user.firstname %>
+            </p>
+            <p class="product-title"><span>Apellido: </span>
+                <%= user.lastname %>
+            </p>
+            <p class="product-title"><span>Email: </span>
+                <%= user.email %>
+            </p>
+
+            <div class="button-container">
+                <div class="edit"><a href="/users/edit/<%= user.id %>">EDITAR PRODUCTO</a></div>
+                <form action="/users/<%= user.id %>?_method=DELETE" method="POST">
+                    <button type="submit" class="delete">ELIMINAR</button>
+                </form>
+            </div>
+        </main>
+
+        <%- include('partials/footer.ejs') %>
+            <script src="js/scripts.js"></script>
+</body>
+
+</html>
