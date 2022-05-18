@@ -5,7 +5,20 @@ const Products = sequelize.define(
 
     "products",
     {
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true,
+        },
         name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        description: {
+            type: DataTypes.TEXT,
+            allowNull: false,
+        },
+        image: {
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -13,21 +26,16 @@ const Products = sequelize.define(
             type: DataTypes.INTEGER,
             allowNull: false,
         },
+        categoryId: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
         discount: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
-        category: {
+        detail: {
             type: DataTypes.STRING,
-            allowNull: false,
-        },
-        description: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        image: {
-            type: DataTypes.STRING,
-            allowNull: false,
         }
     },
     {

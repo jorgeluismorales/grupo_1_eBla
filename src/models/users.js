@@ -1,10 +1,16 @@
 const { sequelize } = require('../config/db');
 const { DataTypes } = require("sequelize");
+const Products = require('./products');
 
 const Users = sequelize.define(
 
     "users",
     {
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true,
+        },
         firstname: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -29,6 +35,9 @@ const Users = sequelize.define(
         role: {
             type: DataTypes.ENUM(['admin', 'user']),
             defaultValue: 'user',
+        },
+        detail: {
+            type: DataTypes.STRING,
         }
     },
     {
@@ -36,4 +45,8 @@ const Users = sequelize.define(
     }
 );
 
+Users.belongsToMany(Products, { through: "products_users" });
+Products.belongsToMany(Users, { through: "products_users" });
+
 module.exports = Users;
+
