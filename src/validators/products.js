@@ -21,7 +21,7 @@ const createProductValidator = [
     body('discount')
         .exists()
         .notEmpty(),
-    body('category')
+    body('categoryId')
         .exists()
         .notEmpty(),
     body('description')
