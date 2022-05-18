@@ -13,13 +13,15 @@ const registerController = async (req, res) => {
         console.log(file)
         const { firstname, lastname, email, password } = req.body;
         const passwordEncrypt = await encrypt(password);
-        await Users.create({
+       const newUser = await Users.create({
             firstname,
             lastname,
             email,
             password: passwordEncrypt,
             image: `${PUBLIC_URL}/images/users/${file.filename}`
         });
+        newUser.detail = `${PUBLIC_URL}/api/users/${newUser.id}`;
+        newUser.save();
         res.redirect('/');
     } catch (e) {
         console.log(e);

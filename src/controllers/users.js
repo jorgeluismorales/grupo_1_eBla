@@ -4,13 +4,23 @@ const Users = require('../models/users');
 const MEDIA_PATH = `${__dirname}/../../public/images/users`;
 
 const usersView = async (req, res) => {
-    const users = await Users.findAll();
+    const users = await Users.findAll(
+        {
+            attributes: {
+                exclude: ['password', 'role']
+            }
+        }
+    );
     res.render('users', { users });
 }
 
 const userDetailsController = async (req, res) => {
-    const { id } = req.params;
-    const user = await Users.findOne({ where: { id } });
+    const user = await Users.findByPk(req.params.id,
+        {
+            attributes: {
+                exclude: ['password', 'role']
+            }
+        });;
     res.render('user-detail', { user });
 }
 

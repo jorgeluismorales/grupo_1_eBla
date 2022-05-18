@@ -1,27 +1,33 @@
 const fs = require("fs");
 const Products = require('../models/products');
+const Categories = require('../models/categories');
 
 const PUBLIC_URL = process.env.PUBLIC_URL;
 const MEDIA_PATH = `${__dirname}/../../public/images/products`;
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
-const createProductView = (req, res) => {
-    res.render('create-product');
+const createProductView = async (req, res) => {
+    const categories = await Categories.findAll();
+    res.render('create-product', { categories });
 }
 
 const createProductController = async (req, res) => {
     try {
         const { file } = req;
-        const { name, price, discount, category, description } = req.body;
-        await Products.create({
+        console.log(file);
+        const { name, description, categoryId, price, discount } = req.body;
+        const newProduct = await Products.create({
             name,
+            description,
+            image: `${PUBLIC_URL}/images/products/${file.filename}`,
+            categoryId,
             price,
             discount,
-            category,
-            image: `${PUBLIC_URL}/images/products/${file.filename}`,
-            description
+
         });
+        newProduct.detail = `${PUBLIC_URL}/api/products/${newProduct.id}`;
+        newProduct.save();
         res.redirect('/');
     } catch (e) {
         res.redirect('products/create');
@@ -35,8 +41,9 @@ const homeController = async (req, res) => {
 }
 
 const detailsController = async (req, res) => {
-    const { id } = req.params;
-    const product = await Products.findOne({ where: { id } });
+    const product = await Products.findByPk(req.params.id,
+        { include: [{ model: Categories, as: "category" }] }
+        );
     res.render('product-detail', { product });
 }
 
@@ -53,26 +60,16 @@ const deleteProductController = async (req, res) => {
 const editProductController = async (req, res) => {
     const { id } = req.params;
     const product = await Products.findOne({ where: { id } });
-    res.render('edit-product', { product });
+    const categories = await Categories.findAll();
+    res.render('edit-product', { product, categories });
 }
 
 const updateProductController = async (req, res) => {
-    const {id} = req.params;
-    const products = await Products.findAll();
-    let productToUpdate = await Products.findOne({where: {id}});
-   
-    productToUpdate ={ 
-        id: productToUpdate.id,
-        ...req.body,
-        image: productToUpdate.image
-    }
-    let newProducts = products.map(product => {
-        if(product.id === id){
-            return product ={...productToUpdate}
-        }
-        return product
-    })
-    await Products.update(newProducts, {where: {id}});
+    const { id } = req.params;
+    console.log(req.body);
+    await Products.update({
+        ...req.body
+    }, { where: { id } });
 }
 
 module.exports = {
