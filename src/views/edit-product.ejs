@@ -16,17 +16,18 @@
         <h1>Editando <%= product.name %>
         </h1>
         <main>
-            <form class="register" action="/products/edit/<%= product.id %>?_method=PATCH" method="post" enctype="multipart/form-data">
+            <form class="register" action="/products/edit/<%= product.id %>?_method=PATCH" method="POST" enctype="multipart/form-data">
                 <div class="fields-container">
                     <div>
-                        <input type="text" name="name" placeholder="Nombre del producto">
-                        <input type="number" name="price" placeholder="Precio del producto">
-                        <input type="number" name="discount" placeholder="Descuento">
+                        <input type="text" name="name" placeholder="Nombre del producto" value="<%= product.name %>">
+                        <input type="number" name="price" placeholder="Precio del producto" value="<%= product.price %>">
+                        <input type="number" name="discount" placeholder="Descuento" value="<%= product.discount %>">
                     </div>
                     <div>
-                        <select name="category" id="category">
-                            <option value="in-sale">En oferta</option>
-                            <option value="visited">Últimos agregados</option>
+                        <select name="categoryId" id="categoryId">
+                            <% categories.forEach(function(category){ %>
+                                <option value="<%= category.id %>"><%= category.categoryName %></option>
+                                <% }) %>
                         </select>
                         <label for="image" class="custom-file-upload">
                             <input type="file" name="image" id="image">
@@ -40,6 +41,9 @@
 
                 <button type="submit">Agregar</button>
             </form>
+            <ul class="errores">
+                
+            </ul>
         </main>
 
         <%- include('partials/footer.ejs') %>
