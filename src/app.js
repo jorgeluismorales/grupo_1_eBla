@@ -28,6 +28,12 @@ app.use('/products', require('./routes/products'));
 app.use('/users', require('./routes/users'));
 app.use('/login', require('./routes/login'));
 
+
+//API ROUTES
+app.use('/api/categories', require('./routes/api/categoriesApiRoute'));
+app.use('/api/products', require('./routes/api/productsApiRoute'));
+app.use('/api/users', require('./routes/api/usersApiRoute'));
+
 dbConnectMySQL();
 
 app.listen(PORT, () => {
