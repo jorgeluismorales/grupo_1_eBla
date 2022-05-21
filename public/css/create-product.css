@@ -3,6 +3,10 @@
     src: url(/fonts/Roboto-Regular.ttf);
 }
 
+*{
+  box-sizing: border-box;
+}
+
 body{
     font-family: Roboto;
 }
@@ -18,13 +22,22 @@ select{
     border: 1px solid #ccc;
     padding: 5px;
     font-size: 14px;
-    margin-top: 10px;
-    margin-bottom: 15px;
+    margin: 10px auto;
 }
 
 .fields-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+}
+
+.fields-container div{
+  display: flex;
+  flex-direction: column;
+}
+
+#image{
+  width: 70%;
+  margin: 10px auto;
 }
 
 label {
@@ -47,6 +60,7 @@ input[type="file"] {
     display: inline-block;
     padding: 6px 12px;
     cursor: pointer;
+    text-align: center;
 }
 
 .register {
@@ -54,20 +68,41 @@ input[type="file"] {
   flex-direction: column;
   width: 90%;
   max-width: 800px;
-  margin: auto;
+  margin: 20px auto;
   padding: 50px 10px;
-  border-radius: 2px;
   background-color: #4e2f7c; /*PROVISORIO*/
   border-radius: 20px;
 }
-
 
 .register input{
   width: 100%;
   margin: 10px auto;
   padding: 10px;
   border: none;
-  border-radius: 10px;
+  border-radius: 6px;
+}
+
+#description{
+  width: 100%;
+  max-width: 750px;
+  border-radius: 6px;
+  margin: 10px auto;
+}
+
+small{
+  width: 100%;
+  max-width:750px;
+  color: #ffffff;
+  display: block;
+  margin: auto;
+}
+
+small.image{
+  text-align: center;
+  margin-top: 0px;
+}
+small.description{
+  max-width:750px;
 }
 
 .register button {
@@ -89,24 +124,34 @@ input[type="file"] {
 }
 
 @media (min-width: 361px){
-  .register input, .register button {
-    width: 70%;
-    max-width: 400px;
-}
+  .register input, .register button, select, small {
+   max-width: 350px;
+  }
+  #image{
+    max-width: 230px;
+  }
+  /* small{
+    justify-content: center;
+  } */
 }
 
 @media screen and (min-width: 620px){
   main {
-    height: 60vh;
+    /* height: 60vh; */
     display: flex;
     justify-content: center;
     align-content: center;
-}
+  }
+  .fields-container {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 10px;
+  }
 }
 
 @media screen and (min-width: 960px){
 main {
-    height: 80vh;
+    /* height: 80vh; */
     display: flex;
     justify-content: center;
     align-content: center;
@@ -285,6 +330,10 @@ text-decoration: none;
 .btn-newsletter{
   margin-left: 20px;
 }
+}
+
+.copyright{
+  text-align: center;
 }
 
 /*-----FIN FOOTER-----*/

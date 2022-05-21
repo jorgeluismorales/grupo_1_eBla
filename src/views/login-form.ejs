@@ -16,15 +16,18 @@
 
     <main>
         <form class="login" action="/login" method="POST">
-            <input type="email" name="email" placeholder="Email">
-            <input type="password" name="password" placeholder="Contraseña">
+            <input type="text" name="email" placeholder="Email" id="email">
+            <small class="email"></small>
+
+            <input type="password" name="password" placeholder="Contraseña" id="password">
+            <small class="password"></small>
 
             <button type="submit">Iniciar sesión</button>
         </form>
     </main>
 
     <%- include('partials/footer.ejs') %>
-    <script src="js/scripts.js"></script>
+    <script src="js/login-form.js"></script>
       
 </body>
 

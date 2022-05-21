@@ -19,8 +19,10 @@
             <form class="register" action="/products/edit/<%= product.id %>?_method=PATCH" method="POST" enctype="multipart/form-data">
                 <div class="fields-container">
                     <div>
-                        <input type="text" name="name" placeholder="Nombre del producto" value="<%= product.name %>">
-                        <input type="number" name="price" placeholder="Precio del producto" value="<%= product.price %>">
+                        <input type="text" name="name" placeholder="Nombre del producto" value="<%= product.name %>" id="name">
+                            <small class="name"></small>
+                        <input type="number" name="price" placeholder="Precio del producto" value="<%= product.price %>" id="price">
+                        <small class="price"></small>
                         <input type="number" name="discount" placeholder="Descuento" value="<%= product.discount %>">
                     </div>
                     <div>
@@ -29,25 +31,27 @@
                                 <option value="<%= category.id %>"><%= category.categoryName %></option>
                                 <% }) %>
                         </select>
-                        <label for="image" class="custom-file-upload">
+                        <label for="image" class="custom-file-upload" id="image">
                             <input type="file" name="image" id="image">
                             <i class="fa-solid fa-file-arrow-up"></i> Subir imagen
                         </label>
+                            <small class="image"></small>
                     </div>
                 </div>
                 <textarea name="description" id="description" placeholder="Ingresa una descripción" rows="10">
                 <%= product.description %>
-            </textarea>
+                </textarea>
+                    <small class="description"></small>
 
                 <button type="submit">Agregar</button>
             </form>
-            <ul class="errores">
+            <!-- <ul class="errores">
                 
-            </ul>
+            </ul> -->
         </main>
 
         <%- include('partials/footer.ejs') %>
-            <script src="js/scripts.js"></script>
+            <script src="/js/edit-create-products.js"></script>
 </body>
 
 </html>

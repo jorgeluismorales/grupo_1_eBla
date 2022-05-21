@@ -18,9 +18,11 @@
         <form class="register" action="create" method="post" enctype="multipart/form-data">
             <div class="fields-container">
                 <div>
-                    <input type="text" name="name" placeholder="Nombre del producto">
-                <input type="number" name="price" placeholder="Precio del producto">
-                <input type="number" name="discount" placeholder="Descuento">
+                    <input type="text" name="name" placeholder="Nombre del producto" id="name">
+                        <small class="name"></small>
+                <input type="number" name="price" placeholder="Precio del producto" id="price">
+                <small class="price"></small>
+                <input type="number" name="discount" placeholder="Descuento" id="discount">
                 </div>
               <div>
                 <select name="categoryId" id="categoryId">
@@ -28,20 +30,22 @@
                         <option value="<%= category.id %>"><%= category.categoryName %></option>
                         <% }) %>
                 </select>
-                <label for="image"  class="custom-file-upload">
+                <label for="image"  class="custom-file-upload" id="image">
                     <input type="file" name="image" id="image">
                     <i class="fa-solid fa-file-arrow-up"></i> Subir imagen
                 </label>
+                <small class="image"></small>
               </div>
             </div>
             <textarea name="description" id="description" placeholder="Ingresa una descripción" rows="10"></textarea>
+            <small class="description"></small>
 
             <button type="submit">Agregar</button>
         </form>
     </main>
 
     <%- include('partials/footer.ejs') %>
-    <script src="js/scripts.js"></script>
+    <script src="/js/edit-create-products.js"></script>
 </body>
 
 </html>

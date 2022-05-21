@@ -14,22 +14,35 @@
 <body>
     <%- include('partials/nav.ejs') %>
 
-    <main>
+    <main  class="registerMain">
+
         <form class="register" action="register" method="post" enctype="multipart/form-data">
-            <input type="text" name="firstname" placeholder="Nombre">
-            <input type="text" name="lastname" placeholder="Apellido">
-            <input type="email" name="email" placeholder="Email">
-            <input type="password" name="password" placeholder="Contraseña">
-            <label for="image"  class="custom-file-upload">
+
+            <input type="text" name="firstname" placeholder="Nombre" id="firstname">
+            <small class="firstname"></small>
+
+            <input type="text" name="lastname" placeholder="Apellido" id="lastname">
+            <small class="lastname"></small>
+
+            <input type="text" name="email" placeholder="Email" id="email">
+            <small class="email"></small>
+
+            <input type="password" name="password" placeholder="Contraseña" id="password">
+            <small class="password"></small>
+
+            <label for="image"  class="custom-file-upload" id="image">
                 <input type="file" name="image" id="image">
                 <i class="fa-solid fa-file-arrow-up"></i> Subir imagen
             </label>
-            <button type="submit">Registrarme</button>
+            <small class="image"></small>
+
+            <button type="submit" id="submit">Registrarme</button>
+
         </form>
     </main>
 
     <%- include('partials/footer.ejs') %>
-    <script src="js/scripts.js"></script>
+    <script src="js/register-form.js"></script>
 </body>
 
 </html>
