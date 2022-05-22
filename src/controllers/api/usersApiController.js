@@ -19,7 +19,7 @@ const getAllUsers = async (req, res) => {
         }
     });
 
-    let totalPages = Math.ceil(users.count / 5);
+    let totalPages = Math.ceil((users.count -1) / 5);
 
     let next= null;
     if(page < totalPages){
@@ -39,7 +39,7 @@ const getAllUsers = async (req, res) => {
         count: users.count,
         next,
         previous,
-        totalPages
+        totalPages: Math.ceil(users.count / 5)
     });
 }
 
