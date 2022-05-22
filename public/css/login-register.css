@@ -71,7 +71,7 @@ border: none;
 border-radius: 6px;
 }
 
-#image{
+#image-label{
   width: 70%;
   margin: 10px auto;
 }
@@ -111,7 +111,7 @@ cursor: pointer;
   
   max-width: 350px;
 }
-#image{
+#image-label{
   max-width: 230px;
 }
 }

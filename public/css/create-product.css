@@ -35,7 +35,7 @@ select{
   flex-direction: column;
 }
 
-#image{
+#image-label{
   width: 70%;
   margin: 10px auto;
 }
@@ -127,7 +127,7 @@ small.description{
   .register input, .register button, select, small {
    max-width: 350px;
   }
-  #image{
+  #image-label{
     max-width: 230px;
   }
   /* small{
