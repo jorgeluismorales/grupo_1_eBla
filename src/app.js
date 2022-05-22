@@ -27,6 +27,7 @@ app.use('/register' , require('./routes/register'));
 app.use('/products', require('./routes/products'));
 app.use('/users', require('./routes/users'));
 app.use('/login', require('./routes/login'));
+app.use('/search', require('./routes/search'));
 
 
 //API ROUTES
