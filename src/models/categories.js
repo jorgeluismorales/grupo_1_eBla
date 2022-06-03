@@ -23,7 +23,7 @@ const Categories = sequelize.define(
 
 Categories.hasMany(Products, {
   foreinkey: "categoryId",
-  sourceKey: "id",
+  sourceKey: "id"
 });
 Products.belongsTo(Categories, { foreinkey: "categoryId", targetId: "id" });
 

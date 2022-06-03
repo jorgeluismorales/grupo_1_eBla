@@ -15,7 +15,6 @@ const createProductView = async (req, res) => {
 const createProductController = async (req, res) => {
     try {
         const { file } = req;
-        console.log(file);
         const { name, description, categoryId, price, discount } = req.body;
         const newProduct = await Products.create({
             name,
@@ -66,7 +65,6 @@ const editProductController = async (req, res) => {
 
 const updateProductController = async (req, res) => {
     const { id } = req.params;
-    console.log(req.body);
     await Products.update({
         ...req.body
     }, { where: { id } });

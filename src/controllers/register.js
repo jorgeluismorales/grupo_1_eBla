@@ -10,7 +10,6 @@ const registerView = (req, res) => {
 const registerController = async (req, res) => {
     try {
         const { file } = req;
-        console.log(file)
         const { firstname, lastname, email, password } = req.body;
         const passwordEncrypt = await encrypt(password);
        const newUser = await Users.create({

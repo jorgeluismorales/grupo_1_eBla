@@ -2,7 +2,6 @@ const Categories = require('../../models/categories');
 
 const createCategory = async (req, res) => {
     const { categoryName } = req.body;
-    console.log(categoryName);
     const newCategory = new Categories({ categoryName });
     await newCategory.save();
     return res.json({ message: 'Category created' });
@@ -25,6 +24,8 @@ const getCategoryById = async (req, res) => {
 }
 
 const updateCategory = async (req, res) => {
+    console.log(req.body);
+    console.log(req.params);
     const { id } = req.params;
     const { categoryName } = req.body;
     await Categories.update({ categoryName }, { where: { id } });
