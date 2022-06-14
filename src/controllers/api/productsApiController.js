@@ -50,6 +50,7 @@ const getProducts = async (req, res) => {
         products: products.rows,
         count: products.count,
         categoriesCount: categoriesCount,
+        lastProduct: products.rows[products.rows.length - 1],
         /*         next,
                 previous,
                 totalPages */
@@ -109,9 +110,78 @@ const createProduct = async (req, res) => {
     }
 }
 
+/* const updateProduct = async (req, res) => {
+    console.log(req.body);
+    console.log(req.file);
+    const { id } = req.params;
+    const { file } = req;
+    const { name, description, categoryId, price, discount } = req.body;
+    const product = await Products.findByPk(id);
+
+    if (product) {
+        const productUpdated = await product.update({
+            name,
+            description,
+            categoryId,
+            price,
+            discount,
+        }, {
+            where: { id }
+        });
+        if (file) {
+            productUpdated.image = `${PUBLIC_URL}/images/products/${file.filename}`;
+            productUpdated.save();
+        }
+        return res.status(200).json({
+            message: 'Product updated'
+        });
+    } else {
+        return res.status(404).json({
+            message: 'Product not found'
+        });
+    }
+} */
+
+const updateProduct = async (req, res) => {
+    const { id } = req.params;
+    const { file } = req;
+    const { name, description, categoryId, price, discount } = req.body;
+    const product = await Products.findByPk(id);
+    if (!product) {
+        return res.status(404).json({
+            message: 'Product not found'
+        });
+    }
+    if (name) {
+        product.name = name;
+    }
+    if (description) {
+        product.description = description;
+    }
+    if (categoryId) {
+        product.categoryId = categoryId;
+    }
+    if (price) {
+        product.price = price;
+    }
+    if (discount) {
+        product.discount = discount;
+    }
+    if (!file) {
+        return
+    }else{
+        product.image = `${PUBLIC_URL}/images/products/${file.filename}`;
+    }
+    await product.save();
+    return res.status(200).json({
+        message: 'Product updated'
+    });
+}
+
 module.exports = {
     getProducts,
     getProductById,
     deleteProductById,
-    createProduct
+    createProduct,
+    updateProduct
 }

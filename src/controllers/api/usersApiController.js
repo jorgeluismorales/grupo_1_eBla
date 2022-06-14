@@ -23,6 +23,12 @@ const getAllUsers = async (req, res) => {
         }
     });
 
+    const lastUserDetail = await Users.findByPk(users.rows[users.rows.length - 1].id, {
+        attributes: {
+            exclude: ['password', 'role', 'detail']
+        }
+    })
+
     /*     let totalPages = Math.ceil((users.count -1) / 5);
     
         let next= null;
@@ -38,9 +44,11 @@ const getAllUsers = async (req, res) => {
         }else{
             previous = null;
         } */
+
     return res.status(200).json({
         users: users.rows,
         count: users.count,
+        lastUser: lastUserDetail,
         /*         next,
                 previous,
                 totalPages: Math.ceil(users.count / 5) */
@@ -93,27 +101,35 @@ const updateUser = async (req, res) => {
     const { id } = req.params;
     const { file } = req;
     const { firstname, lastname, email, password, role } = req.body;
-    const passwordEncrypt = await encrypt(password);
     const user = await Users.findByPk(id);
-    if (user) {
-        await Users.update({
-            firstname,
-            lastname,
-            email,
-            password: passwordEncrypt,
-            role,
-            image: `${PUBLIC_URL}/images/users/${file.filename}`
-        }, {
-            where: { id }
-        });
-        return res.status(200).json({
-            message: 'User updated'
-        });
-    } else {
+    if (!user) {
         return res.status(404).json({
             message: 'User not found'
         });
     }
+    if (firstname) {
+        user.firstname = firstname;
+    }
+    if (lastname) {
+        user.lastname = lastname;
+    }
+    if (email) {
+        user.email = email;
+    }
+    if (password) {
+        const passwordEncrypt = await encrypt(password);
+        user.password = passwordEncrypt;
+    }
+    if (role) {
+        user.role = role;
+    }
+    if (file) {
+        user.image = `${PUBLIC_URL}/images/users/${file.filename}`;
+    }
+    await user.save();
+    return res.status(200).json({
+        message: 'User updated'
+    });
 }
 
 
