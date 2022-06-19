@@ -90,6 +90,9 @@ const createUser = async (req, res) => {
         });
         newUser.detail = `${PUBLIC_URL}/api/users/${newUser.id}`;
         newUser.save();
+        return res.status(201).json({
+            message: 'User created'
+        });
     } catch (e) {
         return res.status(400).json({
             message: e.message
