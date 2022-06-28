@@ -26,14 +26,20 @@ const loginController = async (req, res) => {
 
         user.set('password', undefined, {strict:false})
         const data = {
-          token: await tokenSign(user),
+          name: user.get('firstname'),
+          lastname: user.get('lastname'),
+
+        }
+
+/*         const data = {
           user
         }
         const cookiesOptions = {
           expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7),
           httpOnly: true
         }
-        res.cookie('token', data, cookiesOptions)
+        res.cookie('token', data, cookiesOptions) */
+        req.session.user = data;
         res.redirect('/')
 
       }

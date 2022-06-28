@@ -35,6 +35,8 @@ const createProductController = async (req, res) => {
 }
 
 const homeController = async (req, res) => {
+const user = req.session.user;
+console.log(user);
     const products = await Products.findAll();
     res.render('home', { products, toThousand });
 }
@@ -42,7 +44,7 @@ const homeController = async (req, res) => {
 const detailsController = async (req, res) => {
     const product = await Products.findByPk(req.params.id,
         { include: [{ model: Categories, as: "category" }] }
-        );
+    );
     res.render('product-detail', { product });
 }
 
@@ -64,10 +66,41 @@ const editProductController = async (req, res) => {
 }
 
 const updateProductController = async (req, res) => {
-    const { id } = req.params;
+    /* console.log(req.body);
+    console.log('id',req.params.id);
+     const { id } = req.params;
     await Products.update({
         ...req.body
-    }, { where: { id } });
+    }, { where: { id } }); */
+    const { id } = req.params;
+    const { file } = req;
+    const { name, description, categoryId, price, discount } = req.body;
+    const product = await Products.findByPk(id);
+
+    if (!product) {
+        return res.redirect('/products');
+    }
+
+    if (name) {
+        product.name = name
+    }
+    if (description) {
+        product.description = description;
+    }
+    if (categoryId) {
+        product.categoryId = categoryId;
+    }
+    if (price) {
+        product.price = price;
+    }
+    if (discount) {
+        product.discount = discount;
+    }
+    if (file) {
+        product.image = `${PUBLIC_URL}/images/products/${file.filename}`;
+    }
+    await product.save();
+    res.redirect('/products');
 }
 
 module.exports = {

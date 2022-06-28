@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/login-register.css">
+    <script src="https://kit.fontawesome.com/17362327c7.js" crossorigin="anonymous"></script>
+    <title>Ebla - Editar usuario</title>
+</head>
+
+<body>
+    <%- include('partials/nav.ejs') %>
+
+    <main  class="registerMain"  style="margin-bottom: 250px;">
+
+        <form class="register" action="/users/update/<%= user.id %>?_method=PATCH" method="post" enctype="multipart/form-data">
+
+            <input type="text" name="firstname" placeholder="Nombre" id="firstname" value="<%= user.firstname %>">
+            <small class="firstname"></small>
+
+            <input type="text" name="lastname" placeholder="Apellido" id="lastname" value="<%= user.lastname %>">
+            <small class="lastname"></small>
+
+            <input type="text" name="email" placeholder="Email" id="email" value="<%= user.email %>">
+            <small class="email"></small>
+
+            <input type="password" name="password" placeholder="Contraseña" id="password">
+            <small class="password"></small>
+
+            <label for="image"  class="custom-file-upload" id="image-label">
+                <input type="file" name="image" id="image">
+                <i class="fa-solid fa-file-arrow-up"></i> Subir imagen
+            </label>
+            <small class="image"></small>
+
+            <button type="submit" id="submit">Editar usuario</button>
+
+        </form>
+    </main>
+
+    <%- include('partials/footer.ejs') %>
+    <script src="js/register-form.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>

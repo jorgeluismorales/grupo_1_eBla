@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/css/normalize.css">
     <link rel="stylesheet" href="/css/user-detail.css">
     <script src="https://kit.fontawesome.com/17362327c7.js" crossorigin="anonymous"></script>
-    <title>Ebla - Registro</title>
+    <title>Ebla - Detalle del usuario</title>
 </head>
 
 <body>
@@ -27,7 +27,7 @@
             </p>
 
             <div class="button-container">
-                <div class="edit"><a href="/users/edit/<%= user.id %>">EDITAR PRODUCTO</a></div>
+                <div class="edit"><a href="/users/edit/<%= user.id %>">EDITAR USUARIO</a></div>
                 <form action="/users/<%= user.id %>?_method=DELETE" method="POST">
                     <button type="submit" class="delete">ELIMINAR</button>
                 </form>
